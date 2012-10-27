@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | blog.jbinto.ca]]></title>
   <link href="http://blog.jbinto.ca//blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.jbinto.ca//"/>
-  <updated>2012-10-27T14:36:38-04:00</updated>
+  <updated>2012-10-27T19:04:08-04:00</updated>
   <id>http://blog.jbinto.ca//</id>
   <author>
     <name><![CDATA[Jesse (jbinto)]]></name>
@@ -68,6 +68,17 @@ nav { display: none; }</p>
 <p>/<em> Everything is too big... </em>/
 pre { font-size: 75%; }
 ```</p>
+
+<h2>Things I still don't like</h2>
+
+<ul>
+<li><p>Heroku has an almost 10 second spin-up time when your app has been inactive.
+I may move it elsewhere.</p></li>
+<li><p>I don't know what to do about images. If I move to a static host, I could just
+host them myself. I've tried <a href="http://500px.com/">500px</a> and honestly don't care
+for it.</p></li>
+</ul>
+
 ]]></content>
   </entry>
   

@@ -52,4 +52,11 @@ nav { display: none; }
 pre { font-size: 75%; }
 ```
 
+## Things I still don't like
 
+* Heroku has an almost 10 second spin-up time when your app has been inactive.
+I may move it elsewhere. 
+
+* I don't know what to do about images. If I move to a static host, I could just
+host them myself. I've tried [500px](http://500px.com/) and honestly don't care
+for it. 
