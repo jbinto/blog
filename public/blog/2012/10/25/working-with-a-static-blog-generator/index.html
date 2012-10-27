@@ -9,8 +9,8 @@
   <meta name="author" content="Jesse (jbinto)">
 
   
-  <meta name="description" content="I am using Octopress, which is a static blog generator.
-I like the idea of not having to maintain a Wordpress installation rife with security holes. &hellip;">
+  <meta name="description" content="I am using Octopress. This is a little different from other blog software.
+Rather than being generated on the fly, and dependent on a database and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,17 +91,23 @@ I like the idea of not having to maintain a Wordpress installation rife with sec
   </header>
 
 
-<div class="entry-content"><p>I am using <a href="http://octopress.org/">Octopress</a>, which is a static blog generator.
-I like the idea of not having to maintain a Wordpress installation rife with security holes.
-I like the idea of my data being in my possession and not in some commercial data silo.
-But it might not be practical to have to write in vi, require git and an SSH key, etc.</p>
+<div class="entry-content"><p>I am using <a href="http://octopress.org/">Octopress</a>. This is a little different from other blog software.
+Rather than being generated on the fly, and dependent on a database and application code, this
+is a &#8220;static blog&#8221;. I write and manage actual &#8220;post&#8221; files, and I run a command to generate the
+HTML, CSS, the whole site. It&#8217;s also a <a href="http://git-scm.com/">Git</a> repository, so I have the whole thing under source
+control. And since it&#8217;s a Git repository, I can push it to <a href="http://www.heroku.com/">Heroku</a>, which is hosting this content.</p>
 
-<p>We&#8217;ll see how it goes.</p>
+<p>It will take some getting used to, but it&#8217;s a neat approach. It is absolutely more secure than a typical
+Wordpress installation. It can be hosted for free or nearly free almost anywhere, since it&#8217;s just static HTML.
+It will be lightning fast, since it&#8217;s just static HTML.</p>
+
+<p>It&#8217;s also an extreme approach: SSH keys, git repos&#8230; if I wasn&#8217;t already well-versed in this, I would probably be frustrated.</p>
+
+<p>Things I&#8217;m not so sure how to do, and should find out:</p>
 
 <ul>
-<li>This is a list</li>
-<li>Second item</li>
-<li>Third item</li>
+<li>Edit the CSS and make it feel different. It uses <a href="http://en.wikipedia.org/wiki/Responsive_web_design">responsive design</a>, which I&#8217;m not sure I&#8217;ll comprehend right away.</li>
+<li>How to embed images (where should they be hosted?)</li>
 </ul>
 
 </div>
@@ -140,7 +146,7 @@ But it might not be practical to have to write in vi, require git and an SSH key
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.jbinto.ca//blog/2012/10/25/working-with-a-static-blog-generator/" data-via="" data-counturl="http://blog.jbinto.ca//blog/2012/10/25/working-with-a-static-blog-generator/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.jbinto.ca//blog/2012/10/25/working-with-a-static-blog-generator/" data-via="jbintodotca" data-counturl="http://blog.jbinto.ca//blog/2012/10/25/working-with-a-static-blog-generator/" >Tweet</a>
   
   
   
@@ -169,6 +175,22 @@ But it might not be practical to have to write in vi, require git and an SSH key
   </ul>
 </section>
 
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("jbintodotca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/jbintodotca" class="twitter-follow-button" data-show-count="false">Follow @jbintodotca</a>
+  
+</section>
 
 
 
