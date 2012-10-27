@@ -9,8 +9,8 @@
   <meta name="author" content="Jesse (jbinto)">
 
   
-  <meta name="description" content="I am using Octopress. This is a little different from other blog software.
-Rather than being generated on the fly, and dependent on a database and &hellip;">
+  <meta name="description" content="Problem: After rebooting a remote Debian Squeeze server, the eth0 network
+interface would not come up. /etc/network/interfaces was configured &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,6 +31,18 @@ Rather than being generated on the fly, and dependent on a database and &hellip;
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35843341-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -62,7 +74,186 @@ Rather than being generated on the fly, and dependent on a database and &hellip;
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/10/25/working-with-a-static-blog-generator/">Working With a Static Blog Generator</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/10/27/quickfix-debian-squeeze-eth0-not-coming-up-at-boot/">Quickfix: Debian Squeeze - eth0 not coming up at boot</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-27T10:39:00-04:00" pubdate data-updated="true">Oct 27<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>Problem:</strong> After rebooting a remote Debian Squeeze server, the eth0 network
+interface would not come up. <code>/etc/network/interfaces</code> was configured correctly.
+The only way to get the network up was to run <code>ifconfig eth0 up</code> and
+<code>dhclient eth0</code>.</p>
+
+<p><strong>Configuration:</strong></p>
+
+<figure class='code'><figcaption><span>/etc/network/interfaces </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'># Used by ifup(8) and ifdown(8). See the interfaces(5) manpage or
+</span><span class='line'># /usr/share/doc/ifupdown/examples for more information.
+</span><span class='line'>
+</span><span class='line'>auto lo
+</span><span class='line'>iface lo inet loopback
+</span><span class='line'>
+</span><span class='line'>auto eth0
+</span><span class='line'>iface eth0 inet static
+</span><span class='line'>address 1.2.3.4
+</span><span class='line'>netmask 255.255.255.0
+</span><span class='line'>gateway 1.2.3.1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><strong>Solution:</strong></p>
+
+<p>The <code>ifupdown</code> package wasn&#8217;t installed for some reason (probably due to
+upgrade issues).
+<code>/etc/init.d/networking</code> fails silently when <code>ifup</code> can&#8217;t be found.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>apt-get install ifupdown
+</span><span class='line'><span class="nv">$ </span>/etc/init.d/networking restart
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/27/first-impressions-of-octopress/">First impressions of Octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-27T08:51:00-04:00" pubdate data-updated="true">Oct 27<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It&#8217;s interesting. It shows I still have a lot to learn. I don&#8217;t need to know how
+everything works exactly: I can treat it as a black box and still be productive.
+But here&#8217;s some things I need to work on:</p>
+
+<ul>
+<li>CSS 3 including media queries, responsive design</li>
+<li>Markdown: I know how to make links and lists, but that&#8217;s about it.</li>
+<li>Sass: A CSS compiler to make things <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a></li>
+</ul>
+
+
+<h2>How I updated the CSS</h2>
+
+<p>I&#8217;ve never been very good at CSS. CSS3 with Sass is almost completely foreign to
+me. Since responsive design is all the rage these days, I&#8217;ll resist my
+temptation to rip it all out and start from scratch, and gradually obtain an
+understanding of it over time. In the meantime, the Sass is structured in a way
+that lets you set customizations (colors, fonts) in a centralized place.</p>
+
+<figure class='code'><figcaption><span>sass/_custom/_colors.scss</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gh">diff --git a/sass/custom/_colors.scss b/sass/custom/_colors.scss</span>
+</span><span class='line'><span class="gh">index 740266a..bc80145 100644</span>
+</span><span class='line'><span class="gd">--- a/sass/custom/_colors.scss</span>
+</span><span class='line'><span class="gi">+++ b/sass/custom/_colors.scss</span>
+</span><span class='line'><span class="gu">@@ -2,12 +2,12 @@</span>
+</span><span class='line'> // To give it a try, uncomment some of the lines below rebuild your blog, and see how it works.
+</span><span class='line'> // If you need a handy color picker try http://hslpicker.com
+</span><span class='line'>
+</span><span class='line'><span class="gd">-//$header-bg: #263347;</span>
+</span><span class='line'><span class="gi">+$header-bg: #0f164b;</span>
+</span><span class='line'> //$subtitle-color: lighten($header-bg, 58);
+</span><span class='line'><span class="gd">-//$nav-bg: desaturate(lighten(#8fc17a, 18), 5);</span>
+</span><span class='line'><span class="gi">+$nav-bg: desaturate(lighten(#80849f, 18), 5);</span>
+</span><span class='line'> //$nav-bg-front: image-url(&#39;noise.png&#39;);
+</span><span class='line'> //$nav-bg-back: linear-gradient(lighten($nav-bg, 8), $nav-bg, darken($nav-bg, 11));
+</span><span class='line'><span class="gd">-//$sidebar-bg: desaturate(#eceff5, 8);</span>
+</span><span class='line'><span class="gi">+$sidebar-bg: desaturate(#eceff5, 8);</span>
+</span><span class='line'> //$sidebar-link-color: saturate(#526f9a, 10);
+</span><span class='line'> //$sidebar-link-color-hover: darken(#7ab662, 9);
+</span><span class='line'> //$footer-bg: #ccc !default;
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/25/working-with-a-static-blog-generator/">Working with a static blog generator</a></h1>
     
     
       <p class="meta">
@@ -122,6 +313,14 @@ It will be lightning fast, since it&#8217;s just static HTML.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/27/quickfix-debian-squeeze-eth0-not-coming-up-at-boot/">Quickfix: Debian Squeeze - eth0 not coming up at boot</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/27/first-impressions-of-octopress/">First impressions of Octopress</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/10/25/working-with-a-static-blog-generator/">Working with a static blog generator</a>

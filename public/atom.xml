@@ -4,7 +4,7 @@
   <title><![CDATA[blog.jbinto.ca]]></title>
   <link href="http://blog.jbinto.ca//atom.xml" rel="self"/>
   <link href="http://blog.jbinto.ca//"/>
-  <updated>2012-10-27T08:48:23-04:00</updated>
+  <updated>2012-10-27T12:55:00-04:00</updated>
   <id>http://blog.jbinto.ca//</id>
   <author>
     <name><![CDATA[Jesse (jbinto)]]></name>
@@ -12,6 +12,131 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Quickfix: Debian Squeeze - eth0 not coming up at boot]]></title>
+    <link href="http://blog.jbinto.ca//blog/2012/10/27/quickfix-debian-squeeze-eth0-not-coming-up-at-boot/"/>
+    <updated>2012-10-27T10:39:00-04:00</updated>
+    <id>http://blog.jbinto.ca//blog/2012/10/27/quickfix-debian-squeeze-eth0-not-coming-up-at-boot</id>
+    <content type="html"><![CDATA[<p><strong>Problem:</strong> After rebooting a remote Debian Squeeze server, the eth0 network
+interface would not come up. <code>/etc/network/interfaces</code> was configured correctly.
+The only way to get the network up was to run <code>ifconfig eth0 up</code> and
+<code>dhclient eth0</code>.</p>
+
+<p><strong>Configuration:</strong></p>
+
+<figure class='code'><figcaption><span>/etc/network/interfaces </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'># Used by ifup(8) and ifdown(8). See the interfaces(5) manpage or
+</span><span class='line'># /usr/share/doc/ifupdown/examples for more information.
+</span><span class='line'>
+</span><span class='line'>auto lo
+</span><span class='line'>iface lo inet loopback
+</span><span class='line'>
+</span><span class='line'>auto eth0
+</span><span class='line'>iface eth0 inet static
+</span><span class='line'>address 1.2.3.4
+</span><span class='line'>netmask 255.255.255.0
+</span><span class='line'>gateway 1.2.3.1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><strong>Solution:</strong></p>
+
+<p>The <code>ifupdown</code> package wasn&#8217;t installed for some reason (probably due to
+upgrade issues).
+<code>/etc/init.d/networking</code> fails silently when <code>ifup</code> can&#8217;t be found.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>apt-get install ifupdown
+</span><span class='line'><span class="nv">$ </span>/etc/init.d/networking restart
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[First impressions of Octopress]]></title>
+    <link href="http://blog.jbinto.ca//blog/2012/10/27/first-impressions-of-octopress/"/>
+    <updated>2012-10-27T08:51:00-04:00</updated>
+    <id>http://blog.jbinto.ca//blog/2012/10/27/first-impressions-of-octopress</id>
+    <content type="html"><![CDATA[<p>It&#8217;s interesting. It shows I still have a lot to learn. I don&#8217;t need to know how
+everything works exactly: I can treat it as a black box and still be productive.
+But here&#8217;s some things I need to work on:</p>
+
+<ul>
+<li>CSS 3 including media queries, responsive design</li>
+<li>Markdown: I know how to make links and lists, but that&#8217;s about it.</li>
+<li>Sass: A CSS compiler to make things <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a></li>
+</ul>
+
+
+<h2>How I updated the CSS</h2>
+
+<p>I&#8217;ve never been very good at CSS. CSS3 with Sass is almost completely foreign to
+me. Since responsive design is all the rage these days, I&#8217;ll resist my
+temptation to rip it all out and start from scratch, and gradually obtain an
+understanding of it over time. In the meantime, the Sass is structured in a way
+that lets you set customizations (colors, fonts) in a centralized place.</p>
+
+<figure class='code'><figcaption><span>sass/_custom/_colors.scss</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gh">diff --git a/sass/custom/_colors.scss b/sass/custom/_colors.scss</span>
+</span><span class='line'><span class="gh">index 740266a..bc80145 100644</span>
+</span><span class='line'><span class="gd">--- a/sass/custom/_colors.scss</span>
+</span><span class='line'><span class="gi">+++ b/sass/custom/_colors.scss</span>
+</span><span class='line'><span class="gu">@@ -2,12 +2,12 @@</span>
+</span><span class='line'> // To give it a try, uncomment some of the lines below rebuild your blog, and see how it works.
+</span><span class='line'> // If you need a handy color picker try http://hslpicker.com
+</span><span class='line'>
+</span><span class='line'><span class="gd">-//$header-bg: #263347;</span>
+</span><span class='line'><span class="gi">+$header-bg: #0f164b;</span>
+</span><span class='line'> //$subtitle-color: lighten($header-bg, 58);
+</span><span class='line'><span class="gd">-//$nav-bg: desaturate(lighten(#8fc17a, 18), 5);</span>
+</span><span class='line'><span class="gi">+$nav-bg: desaturate(lighten(#80849f, 18), 5);</span>
+</span><span class='line'> //$nav-bg-front: image-url(&#39;noise.png&#39;);
+</span><span class='line'> //$nav-bg-back: linear-gradient(lighten($nav-bg, 8), $nav-bg, darken($nav-bg, 11));
+</span><span class='line'><span class="gd">-//$sidebar-bg: desaturate(#eceff5, 8);</span>
+</span><span class='line'><span class="gi">+$sidebar-bg: desaturate(#eceff5, 8);</span>
+</span><span class='line'> //$sidebar-link-color: saturate(#526f9a, 10);
+</span><span class='line'> //$sidebar-link-color-hover: darken(#7ab662, 9);
+</span><span class='line'> //$footer-bg: #ccc !default;
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Working with a static blog generator]]></title>

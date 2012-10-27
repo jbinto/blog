@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | blog.jbinto.ca]]></title>
   <link href="http://blog.jbinto.ca//blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.jbinto.ca//"/>
-  <updated>2012-10-27T08:48:23-04:00</updated>
+  <updated>2012-10-27T12:55:00-04:00</updated>
   <id>http://blog.jbinto.ca//</id>
   <author>
     <name><![CDATA[Jesse (jbinto)]]></name>
@@ -12,6 +12,55 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[First impressions of Octopress]]></title>
+    <link href="http://blog.jbinto.ca//blog/2012/10/27/first-impressions-of-octopress/"/>
+    <updated>2012-10-27T08:51:00-04:00</updated>
+    <id>http://blog.jbinto.ca//blog/2012/10/27/first-impressions-of-octopress</id>
+    <content type="html"><![CDATA[<p>It's interesting. It shows I still have a lot to learn. I don't need to know how
+everything works exactly: I can treat it as a black box and still be productive.
+But here's some things I need to work on:</p>
+
+<ul>
+<li>CSS 3 including media queries, responsive design</li>
+<li>Markdown: I know how to make links and lists, but that's about it.</li>
+<li>Sass: A CSS compiler to make things <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a></li>
+</ul>
+
+
+<h2>How I updated the CSS</h2>
+
+<p>I've never been very good at CSS. CSS3 with Sass is almost completely foreign to
+me. Since responsive design is all the rage these days, I'll resist my
+temptation to rip it all out and start from scratch, and gradually obtain an
+understanding of it over time. In the meantime, the Sass is structured in a way
+that lets you set customizations (colors, fonts) in a centralized place.</p>
+
+<p>``` diff sass/<em>custom/</em>colors.scss
+diff --git a/sass/custom/<em>colors.scss b/sass/custom/</em>colors.scss
+index 740266a..bc80145 100644
+--- a/sass/custom/<em>colors.scss
++++ b/sass/custom/</em>colors.scss
+@@ -2,12 +2,12 @@
+ // To give it a try, uncomment some of the lines below rebuild your blog, and see how it works.
+ // If you need a handy color picker try http://hslpicker.com</p>
+
+<p>-//$header-bg: #263347;
++$header-bg: #0f164b;
+ //$subtitle-color: lighten($header-bg, 58);
+-//$nav-bg: desaturate(lighten(#8fc17a, 18), 5);
++$nav-bg: desaturate(lighten(#80849f, 18), 5);
+ //$nav-bg-front: image-url('noise.png');
+ //$nav-bg-back: linear-gradient(lighten($nav-bg, 8), $nav-bg, darken($nav-bg, 11));
+-//$sidebar-bg: desaturate(#eceff5, 8);
++$sidebar-bg: desaturate(#eceff5, 8);
+ //$sidebar-link-color: saturate(#526f9a, 10);
+ //$sidebar-link-color-hover: darken(#7ab662, 9);
+ //$footer-bg: #ccc !default;
+```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Working with a static blog generator]]></title>

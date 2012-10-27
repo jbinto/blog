@@ -1,2 +1,19 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+
+#content {
+   font-size: 87.5%;
+}
+
+header {
+  font-size: 68%;
+  text-decoration: underline;
+}
+
+h2 {
+  color: #93A1A1;
+}
+
+nav { display: none; }
+
+pre { font-size: 75%; }
