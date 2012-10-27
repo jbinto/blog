@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | blog.jbinto.ca]]></title>
   <link href="http://blog.jbinto.ca//blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.jbinto.ca//"/>
-  <updated>2012-10-27T14:08:14-04:00</updated>
+  <updated>2012-10-27T14:36:38-04:00</updated>
   <id>http://blog.jbinto.ca//</id>
   <author>
     <name><![CDATA[Jesse (jbinto)]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[First impressions of Octopress]]></title>
     <link href="http://blog.jbinto.ca//blog/2012/10/27/first-impressions-of-octopress/"/>
-    <updated>2012-10-27T08:51:00-04:00</updated>
+    <updated>2012-10-27T14:35:00-04:00</updated>
     <id>http://blog.jbinto.ca//blog/2012/10/27/first-impressions-of-octopress</id>
     <content type="html"><![CDATA[<p>It's interesting. It shows I still have a lot to learn. I don't need to know how
 everything works exactly: I can treat it as a black box and still be productive.
@@ -37,27 +37,36 @@ temptation to rip it all out and start from scratch, and gradually obtain an
 understanding of it over time. In the meantime, the Sass is structured in a way
 that lets you set customizations (colors, fonts) in a centralized place.</p>
 
-<p>``` diff sass/<em>custom/</em>colors.scss
-diff --git a/sass/custom/<em>colors.scss b/sass/custom/</em>colors.scss
-index 740266a..bc80145 100644
---- a/sass/custom/<em>colors.scss
-+++ b/sass/custom/</em>colors.scss
-@@ -2,12 +2,12 @@
- // To give it a try, uncomment some of the lines below rebuild your blog, and see how it works.
- // If you need a handy color picker try http://hslpicker.com</p>
+<p>I'm just poking around at these values. <code>desaturate</code> and <code>lighten</code> are
+Sass functions.</p>
 
-<p>-//$header-bg: #263347;
-+$header-bg: #0f164b;
- //$subtitle-color: lighten($header-bg, 58);
--//$nav-bg: desaturate(lighten(#8fc17a, 18), 5);
-+$nav-bg: desaturate(lighten(#80849f, 18), 5);
- //$nav-bg-front: image-url('noise.png');
- //$nav-bg-back: linear-gradient(lighten($nav-bg, 8), $nav-bg, darken($nav-bg, 11));
--//$sidebar-bg: desaturate(#eceff5, 8);
-+$sidebar-bg: desaturate(#eceff5, 8);
- //$sidebar-link-color: saturate(#526f9a, 10);
- //$sidebar-link-color-hover: darken(#7ab662, 9);
- //$footer-bg: #ccc !default;
+<p><code>css sass/_custom/_colors.scss
+$header-bg: #0f164b;
+$nav-bg: desaturate(lighten(#80849f, 18), 5);
+$sidebar-bg: desaturate(#eceff5, 8);
+</code></p>
+
+<p>``` css sass/<em>custom/</em>styles.scss</p>
+
+<h1>content {</h1>
+
+<p>   font-size: 87.5%;
+}</p>
+
+<p>header {
+  font-size: 68%;
+  text-decoration: underline;
+}</p>
+
+<p>h2 {
+  color: #93A1A1;
+}</p>
+
+<p>/<em> The nav seems like a waste of space to me. </em>/
+nav { display: none; }</p>
+
+<p>/<em> Everything is too big... </em>/
+pre { font-size: 75%; }
 ```</p>
 ]]></content>
   </entry>
