@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[blog.jbinto.ca]]></title>
-  <link href="http://blog.jbinto.ca//atom.xml" rel="self"/>
+  <title><![CDATA[Category: tech | blog.jbinto.ca]]></title>
+  <link href="http://blog.jbinto.ca//blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://blog.jbinto.ca//"/>
   <updated>2012-10-25T21:00:24-04:00</updated>
   <id>http://blog.jbinto.ca//</id>
@@ -23,7 +23,7 @@ I like the idea of not having to maintain a Wordpress installation rife with sec
 I like the idea of my data being in my possession and not in some commercial data silo.
 But it might not be practical to have to write in vi, require git and an SSH key, etc.</p>
 
-<p>We&#8217;ll see how it goes.</p>
+<p>We'll see how it goes.</p>
 
 <ul>
 <li>This is a list</li>
