@@ -1,25 +1,29 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://blog.jbinto.ca//blog/2012/10/25/working-with-a-static-blog-generator/</loc>
-        <lastmod>2012-10-27T00:43:28-04:00</lastmod>
+        <loc>http://jbinto.ca/blog/2012/10/25/working-with-a-static-blog-generator/</loc>
+        <lastmod>2013-03-01T21:12:11-05:00</lastmod>
     </url>
     <url>
         <loc>
-            http://blog.jbinto.ca//blog/2012/10/27/quickfix-debian-squeeze-eth0-not-coming-up-at-boot/
+            http://jbinto.ca/blog/2012/10/27/quickfix-debian-squeeze-eth0-not-coming-up-at-boot/
         </loc>
-        <lastmod>2012-10-27T11:16:36-04:00</lastmod>
+        <lastmod>2013-03-01T21:12:11-05:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.jbinto.ca//blog/2012/10/27/first-impressions-of-octopress/</loc>
-        <lastmod>2012-10-27T15:17:42-04:00</lastmod>
+        <loc>http://jbinto.ca/blog/2012/10/27/first-impressions-of-octopress/</loc>
+        <lastmod>2013-03-01T21:12:11-05:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.jbinto.ca//</loc>
-        <lastmod>2012-10-27T15:17:42-04:00</lastmod>
+        <loc>http://jbinto.ca/about-me/</loc>
+        <lastmod>2013-03-01T22:20:40-05:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.jbinto.ca//blog/archives/</loc>
-        <lastmod>2012-10-27T15:17:42-04:00</lastmod>
+        <loc>http://jbinto.ca/</loc>
+        <lastmod>2013-03-01T21:12:11-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://jbinto.ca/blog/archives/</loc>
+        <lastmod>2013-03-01T21:12:11-05:00</lastmod>
     </url>
 </urlset>
