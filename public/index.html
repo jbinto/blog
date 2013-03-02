@@ -9,8 +9,7 @@
   <meta name="author" content="Jesse Buchanan (jbinto@jbinto.ca)">
 
   
-  <meta name="description" content="It&#8217;s interesting. It shows I still have a lot to learn. I don&#8217;t need to know how
-everything works exactly: I can treat it as a black box &hellip;">
+  <meta name="description" content="I&#8217;ve taken the time to refresh myself on my Octopress setup. It&#8217;s been a few months since I touched it, so obviously I&#8217;m a little &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -62,7 +61,11 @@ everything works exactly: I can treat it as a black box &hellip;">
   
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="http://jbinto.ca/resume">Resume</a></li>
+  <li><a href="http://twitter.com/jbinto">Twitter</a></li>
+  <li><a href="http://github.com/jbinto">Github</a></li>
+
 </ul>
 
 </nav>
@@ -70,6 +73,88 @@ everything works exactly: I can treat it as a black box &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/01/blowing-the-dust-off-of-octopress/">Blowing the dust off of Octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-01T23:18:00-05:00" pubdate data-updated="true">Mar 1<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve taken the time to refresh myself on my Octopress setup. It&#8217;s been a few months since I touched it, so obviously I&#8217;m a little rusty.</p>
+
+<p>I&#8217;ve moved everything from Heroku to my static host, which is hosted on <a href="http://linode.com">Linode</a>. I was upset with the long (10s) spin-up times for an inactive Heroku website, and wasn&#8217;t clear what kind of limitations I&#8217;d face with posting large images. I also thought it was a good idea to make this blog the front page of my personal domain, rather than segregating it off to blog.jbinto.ca.</p>
+
+<p>It took a while to get it all set up, but now posting is fairly simple:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake new_post["Blowing the dust off of Octopress"]
+</span><span class='line'>mkdir -p source/_posts
+</span><span class='line'>Creating new post: source/_posts/2013-03-01-test.markdown</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You open the <a href="http://en.wikipedia.org/wiki/Markdown">Markdown</a> file in your favourite text editor, and edit that. You can preview using <code>rake preview</code> and going to localhost:4000 in your browser. To deploy the blog, do:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
+</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I also have the source code for the blog <a href="http://github.com/jbinto/blog">hosted at Github</a>.</p>
+
+<p>Why would I use this over something like Wordpress? It seems so complicated! Well, here are some reasons that come to mind:</p>
+
+<h2>Pros</h2>
+
+<ul>
+<li>I have complete control over the generated HTML</li>
+<li>No dependence on a database server or server-side language</li>
+<li>The data can be under source control, backed up at Github</li>
+<li>The data is in plain text, so it will last forever</li>
+<li>Can be hosted anywhere, since it&#8217;s just static HTML</li>
+<li>Secure; don&#8217;t have to worry about upgrading Wordpress</li>
+<li>I get a nice responsive layout for free</li>
+<li>It&#8217;s written in Ruby</li>
+</ul>
+
+
+<h2>Cons</h2>
+
+<ul>
+<li>Need access to a terminal, ssh, git to post.</li>
+<li>Images are tricky. I can embed images directly, but getting nice thumbnails will probably require work. The Flickr feed is nice, but I&#8217;ll probably need to post screenshots at some point.</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -334,6 +419,10 @@ It will be lightning fast, since it&#8217;s just static HTML.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/01/blowing-the-dust-off-of-octopress/">Blowing the dust off of Octopress</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/10/27/first-impressions-of-octopress/">First impressions of Octopress</a>
