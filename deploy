@@ -1,1 +1,1 @@
-rake generate && git push github && rake deploy
+rake generate && git commit -a && git push github && rake deploy
