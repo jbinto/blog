@@ -3,7 +3,7 @@ layout: post
 title: "Bitmaker Labs Day 1"
 date: 2013-03-04 17:35
 comments: true
-categories: 
+categories: bitmaker-labs
 ---
 
 {% img /images/bitmaker-day1.jpg Bitmaker Labs class %}
