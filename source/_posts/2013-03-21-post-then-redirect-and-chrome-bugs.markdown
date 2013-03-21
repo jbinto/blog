@@ -22,8 +22,8 @@ You see this all the time in older, clunky web applications (think government). 
 Fortunately, web developers have a pattern to fix this. After completing a `POST`, they will redirect the user to a "safe" page. This redirect is always made using `GET`. Common Rails practice is to always redirect from a `POST` action, like so:
 
 {% codeblock lang:ruby %}
-if Picture.create!(params[:picture])
-  redirect_to '/pictures'
+if @picture.save
+  redirect_to pictures_path
 end
 {% endcodeblock %}
 
