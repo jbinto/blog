@@ -5,7 +5,7 @@ require "stringex"
 ## -- Rsync Deploy config -- ##
 # Be sure your public key is listed in your server's ~/.ssh/authorized_keys file
 ssh_user       = "jbinto@jbinto.ca"
-ssh_port       = "53484"
+ssh_port       = "22"
 document_root  = "~/jbinto.ca/public_html"
 rsync_delete   = false
 rsync_args     = ""  # Any extra arguments to pass to rsync
