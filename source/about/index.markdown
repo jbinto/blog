@@ -7,8 +7,10 @@ sharing: false
 footer: false
 ---
 
-Hi, I'm Jesse. I'm a software developer born and raised in Toronto, Canada. 
+Hi, I'm Jesse Buchanan, aka "jbinto" on the internet. *(That's J-B, in T-O, as in Toronto, Ontario.)*
 
-I've always been interested in technology, and these days I'm focused on modern web technologies: Ruby (on Rails), HTML5, CSS3, JavaScript, etc. I'm currently enrolled in an intensive 9-week program at <a href="http://bitmakerlabs.com/">Bitmaker Labs</a>, in the Spring 2013 cohort. If you'd like to know more about me, <a href="http://jbinto.ca/resume">take a look at my resume</a>. 
+I'm a highly opinionated software developer. My current toolbox includes Rails, JavaScript and Linux, but in the past I've also used C#, ASP.NET (both webforms and MVC), Oracle, and Python. 
 
-This site was generated using <a href="http://octopress.org/">Octopress</a>, which is a static blog generator written in Ruby. I've [shared the source code](http://github.com/jbinto/blog) of this site on Github.
+I'm interested in [open data projects](http://toronto.ca/open/). If you have any ideas you'd like to share, or if you'd just like to talk about technology, I'd love to chat. Go to [jessebuchanan.ca](http://jessebuchanan.ca) to find out how to contact me. 
+
+This site was generated using <a href="http://octopress.org/">Octopress</a>, which is a static blog generator written in Ruby. I've [shared the source code](http://github.com/jbinto/blog) on Github.
