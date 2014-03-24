@@ -217,4 +217,6 @@ Don't do this.
 
 I'm pretty sure that's *exactly* what I'm doing. It'll take me a bit longer to understand exactly what this means and why it's a problem, because for now, everything is working fine.
 
+**UPDATE:** This [GIS StackExchange question](https://gis.stackexchange.com/questions/48949/epsg-3857-or-4326-for-googlemaps-openstreetmap-and-leaflet) helps clear things up a bit. More in a future post.
+
 Next step: Creating a Rails app, with migrations to automate the shapefile import and associated data normalization.
