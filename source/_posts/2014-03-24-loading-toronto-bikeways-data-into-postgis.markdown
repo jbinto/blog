@@ -8,13 +8,11 @@ categories:
 
 ## Working with shapefiles
 
-Lately, I've been working with the [City of Toronto's open data catalogue](http://toronto.ca/open), specifically the Bikeways route data. The route data is provided in the form of an [ESRI Shapefile](https://en.wikipedia.org/wiki/Shapefile), a once proprietary format, now an open standard.
+I've been working with the [City of Toronto's open data catalogue](http://toronto.ca/open), specifically the Bikeways route data. The route data is provided as an [ESRI Shapefile](https://en.wikipedia.org/wiki/Shapefile), a once proprietary format, now an open standard.
 
-If you go to the Toronto open data site, you'll see there are two shapefiles provided: "MTM 3 Degree Zone 10, NAD27" and "WGS84 (Latitude/Longitude)". After [a short crash course on coordinate systems and projections](http://daniel-azuma.com/articles/georails/part-4), the Clarke 1866 ellipsoid and other GIS trivia, I found I'm in luck. WGS84 is what Google Maps uses, so I already have the data in the format I need it in.
+If you go to the Toronto open data site, you'll see there are two shapefiles provided: "MTM 3 Degree Zone 10, NAD27" and "WGS84 (Latitude/Longitude)". After [a short crash course on coordinate systems and projections](http://daniel-azuma.com/articles/georails/part-4), I found I'm in luck: WGS84 is what Google Maps uses, so the data is already in the correct format.
 
-Shapefiles are actually fairly simple, once you can crack them open with something. 
-
-There are open source tools you can use to convert from this format to something more usable, such as [KML](https://en.wikipedia.org/wiki/Keyhole_Markup_Language) (if you've ever used Google Earth or the Maps API, you're familiar with KML). There's also a newer format called [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON), which I'll be using. In a stroke of luck, the Google Maps team just recently (March 2014) announced support for GeoJSON, through it's new [Data Layer](https://developers.google.com/maps/documentation/javascript/datalayer) functionality.
+There are open source tools you can use to convert from shapefiles to something more usable, such as [KML](https://en.wikipedia.org/wiki/Keyhole_Markup_Language) (if you've ever used Google Earth or the Maps API, you're familiar with KML). There's also a newer format called [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON), which I'll be using. In a stroke of luck, the Google Maps team just recently (March 2014) announced support for GeoJSON, through it's new [Data Layer](https://developers.google.com/maps/documentation/javascript/datalayer) functionality.
 
 The first naive approach I took was to just dump the whole file into GeoJSON.
 
@@ -67,13 +65,43 @@ I loaded the data into PostgreSQL and started looking at it.
 {% codeblock %}
 psql -d postgis_junk < shapes.sql
 echo "\d shapes" | psql -d postgis_junk
+
+                                       Table "public.shapes"
+   Column   |              Type              |                      Modifiers                       
+------------+--------------------------------+------------------------------------------------------
+ gid        | integer                        | not null default nextval('shapes_gid_seq'::regclass)
+ geo_id     | numeric(10,0)                  | 
+ lfn_id     | numeric(10,0)                  | 
+ lf_name    | character varying(110)         | 
+ address_l  | character varying(20)          | 
+ address_r  | character varying(20)          | 
+ oe_flag_l  | character varying(2)           | 
+ oe_flag_r  | character varying(2)           | 
+ lonuml     | integer                        | 
+ hinuml     | integer                        | 
+ lonumr     | integer                        | 
+ hinumr     | integer                        | 
+ fnode      | numeric(10,0)                  | 
+ tnode      | numeric(10,0)                  | 
+ one_way_di | smallint                       | 
+ dir_code_d | character varying(20)          | 
+ fcode      | integer                        | 
+ fcode_desc | character varying(100)         | 
+ juris_code | character varying(20)          | 
+ objectid   | numeric                        | 
+ cp_type    | character varying(50)          | 
+ rid        | double precision               | 
+ geom       | geometry(MultiLineString,4326) | 
+Indexes:
+    "shapes_pkey" PRIMARY KEY, btree (gid)
+    "shapes_geom_gist" gist (geom)
 {% endcodeblock %}
 
 The data will need to be cleaned up significantly. It's denormalized with a lot of repetition.
 
 <a href="/images/bikeways_denorm.png">{% img /images/bikeways_denorm.png 833 420 A sample of the data, straight from shp2pgsql %}</a>
 
-Immediately, I noticed some entries that there were clearly not bike paths. 427/Gardiner, Brown's Line, etc. It didn't take long to figure out the common thread: `cp_type`.
+Immediately, I noticed some entries that were clearly not bike paths. 427/Gardiner, Brown's Line, etc. It didn't take long to figure out the common thread: `cp_type`. 
 
 {% codeblock %}
 select count(*) from shapes;
@@ -169,7 +197,7 @@ Contra-Flow Bike Lanes  2.47592665715739
 
 Disclaimer: I've been using PostGIS for less than a week.
 
-PostGIS can store both *[geometry](http://postgis.net/docs/GeometryType.html)* and *[geography](http://postgis.net/docs/manual-1.5/ch04.html#PostGIS_Geography)*. Geometry is as we learned in grade school: 2 dimensional cartesian coordinates, simple to manipulate, familiar formulas for length, area, etc. Geography uses latitude and longitude, which uses spherical coordinates. Asking a `geography` for it's length will return an answer in `degrees`, where a `geometry` responds in `metres`. Simply put, the two don't really mix.
+PostGIS can store both *[geometry](http://postgis.net/docs/GeometryType.html)* and *[geography](http://postgis.net/docs/manual-1.5/ch04.html#PostGIS_Geography)*. Geometry is as we learned in grade school: 2 dimensional cartesian coordinates, simple to manipulate, familiar formulas for length, area, etc. Geography uses latitude and longitude, which are 3-dimensional spherical coordinates. Asking a `geography` for it's length will return an answer in `degrees`, whereas a `geometry` responds in `metres`. Simply put, the two don't really mix.
 
 Some things I've learned:
 
@@ -181,7 +209,7 @@ Some things I've learned:
 
 Here's where it gets messy. One thing that worries me is the following quote:
 
-{% blockquote Daniel Azum http://daniel-azuma.com/articles/georails/part-7 Geometry vs. Geography, or, How I Learned To Stop Worrying And Love Projections %}
+{% blockquote Daniel Azum http://daniel-azuma.com/articles/georails/part-7 GeoRails: Geometry vs. Geography, or, How I Learned To Stop Worrying And Love Projections %}
 You might be tempted to store latitude and longitude in a geometry type column. That is, to set up your PostGIS column with a geometry type, but use SRID=4326 (which is the EPSG number for WGS 84 latitude and longitude).
 
 Don't do this.
