@@ -6,7 +6,7 @@ comments: true
 categories:
 ---
 
-I've been using Linux for quite a long times, but I still get a little anxious every time I have to run a server in production, listening on the internet.
+I've been using Linux for quite a long time, but I still get a little anxious every time I have to run a server in production, listening on the internet.
 
 It's not so hard to get a server up and running. Even if you're not a system administrator, with a little bit of Linux experience and some Google-fu you can get up and running fairly quickly.
 
