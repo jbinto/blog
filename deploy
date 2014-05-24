@@ -1,1 +1,1 @@
-rake generate && git commit -a && git push github && rake deploy
+bundle exec rake generate && git commit -a && git push github && s3_website push public

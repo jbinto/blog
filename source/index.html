@@ -1,29 +1,63 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"> 
+    <meta name="description" content="Jesse Buchanan: Toronto software developer">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://jessebuchanan.ca/">
+    <title>Jesse Buchanan</title>
+</head>
 
-<div class="blog-index">
-  {% assign index = true %}
-  {% for post in paginator.posts %}
-  {% assign content = post.content %}
-    <article>
-      {% include article.html %}
-    </article>
-  {% endfor %}
-  <div class="pagination">
-    {% if paginator.next_page %}
-      <a class="prev" href="{{paginator.next_page}}">&larr; Older</a>
-    {% endif %}
-    <a href="/blog/archives">Blog Archives</a>
-    {% if paginator.previous_page %}
-    <a class="next" href="{{paginator.previous_page}}">Newer &rarr;</a>
-    {% endif %}
-  </div>
-</div>
-<aside class="sidebar">
-  {% if site.blog_index_asides.size %}
-    {% include_array blog_index_asides %}
-  {% else %}
-    {% include_array default_asides %}
-  {% endif %}
-</aside>
+<body>
+<h1>jessebuchanan.ca</h1>
+
+<!-- Congratulations! You were curious enough to take a gander at my HTML.
+     Like you, I'm always interested in looking at how things work behind
+     the scenes. And I won't lie, I sometimes judge tech businesses based 
+     on how clean their emitted HTML is. If I see a lot of commented out 
+     markup, internal system details, or anything amiss, I dock them a point.
+     Just one though. Attention to detail is one of my strongest values.
+
+     The tools I used to build this page include:
+     * Git
+     * Amazon S3 (formerly: DigitalOcean / nginx)
+     * Amazon CloudFront
+     * StartSSL for a free, 1-year SSL certificate
+     * Vim/Sublime Text, as necessary
+     * https://github.com/h5bp/html5-boilerplate
+     * https://github.com/laurilehmijoki/s3_website
+
+     The utter lack of CSS was a conscious design choice. 
+     See http://motherfuckingwebsite.com/ (not mine) for more on this choice.
+
+     At some point, I will bite the bullet and do some design. But not today.
+
+     This concludes your easter egg hunt. Better luck next year.
+--> 
+
+<p>Hi there. This is Jesse Buchanan's website. I'm a highly opinionated software developer (though my strong opinions are <a href="http://www.saffo.com/02008/07/26/strong-opinions-weakly-held/">weakly held</a>). My current toolbox includes Rails, JavaScript and Linux, but in the past I've also used C#, ASP.NET (both webforms and MVC), Oracle, and Python.</p>
+
+<p>I'm currently trying my hand at front-end development, including AngularJS and Ember.js. I don't believe in pigeon-holing myself into one or two technologies or platforms. I try to keep an open mind, and use the right tool for the job.</p> 
+
+<h2>Here are some ways you can reach me.</h2>
+
+<p>If you're interested in technology (particularly software development), I'm always keen to chat. Please don't hesitate to drop me a line!</p>
+
+<ul>
+    <li>Email: <a href="mailto:hello@jessebuchanan.ca">hello@jessebuchanan.ca</a></li>
+    <li>Voicemail/SMS: <a href="tel:6474785803">647-478-5803</a></li>
+    <li>Twitter: <a href="http://twitter.com/jbintodotca">@jbintodotca</a></li>
+    <li>IRC: jbinto on Freenode</li>
+</ul>
+
+<h2>Here are some things you might find interesting.</h2>
+<ul>
+    <li>Blog: <a href="https://jessebuchanan.ca/blog/">/blog/</a></li>
+    <li>My public bookmarks list, currently on Reddit: <a href="http://reddit.com/r/jbinto">/r/jbinto</a>
+</ul>
+
+<p>Created in Toronto, in the spirit of <em>just ship it</em>. Last updated 2014-05-24. <a href="https://github.com/jbinto/jessebuchanan.ca/commits">Source on GitHub.</a></a>
+
+
+</body>
+</html>

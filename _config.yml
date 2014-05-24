@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://jbinto.ca
+url: https://jessebuchanan.ca/blog/
 title: Jesse Buchanan ("jbinto")
 subtitle: I'm a software developer, a Torontonian, and a Leafs fan.
-author: Jesse Buchanan (jbinto@jbinto.ca)
+author: Jesse Buchanan (hello@jessebuchanan.ca)
 #simple_search: http://google.com/search
 description:
 
@@ -102,7 +102,6 @@ google_analytics_tracking_id: "UA-35843341-1"
 
 # Facebook Like
 facebook_like: false
-
 
 flickr_userid: 79361495@N07
 flickr_nickname: jbinto
