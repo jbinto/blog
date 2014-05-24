@@ -36,7 +36,7 @@ cloudfront_distribution_id: <% ENV['JESSEBUCHANANCA_AWS_CLOUDFRONT_DIST_ID'] %>
 #     items:
 #       CNAME: your.website.com
 
-# cloudfront_invalidate_root: true
+cloudfront_invalidate_root: true
 
 # concurrency_level: 5
 
