@@ -1,6 +1,6 @@
 # jessebuchanan.ca
 
-This is the source code for jessebuchanan.ca. It is powered by [Octopress 2](http://octopress.org/) and deployed on Amazon S3 / CloudFront using the [s3_website](https://github.com/laurilehmijoki/s3_website). 
+This is the source code for jessebuchanan.ca. It is powered by [Octopress 2](http://octopress.org/) and deployed on Amazon S3 / CloudFront using the [s3_website](https://github.com/laurilehmijoki/s3_website) gem. 
 
 ## Installation
 
@@ -28,9 +28,14 @@ brew cask install java
 
 ## Upgrading Octopress
 
+See http://octopress.org/docs/updating/
+
 ```
 git remote add upstream git@github.com:imathis/octopress.git
+git fetch upsream
 git merge upstream/master
+rake update_source
+rake update_style
 ```
 
 Resolve all the merge conflicts and commit.
@@ -72,5 +77,5 @@ Deployment is handled via `s3_website`.
 ```
 source set_aws_credentials.sh
 s3_website push
-``` 
+```
 
