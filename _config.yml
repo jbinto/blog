@@ -6,7 +6,7 @@ url: https://jessebuchanan.ca/blog/
 title: Jesse Buchanan ("jbinto")
 subtitle: I'm a software developer, a Torontonian, and a Leafs fan.
 author: Jesse Buchanan (hello@jessebuchanan.ca)
-simple_search: https://www.google.com/search
+#simple_search: https://www.google.com/search
 description:
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
