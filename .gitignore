@@ -13,3 +13,4 @@ node_modules
 public
 *.swp
 set_aws_credentials.sh
+Gemfile.lock
