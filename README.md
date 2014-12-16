@@ -5,7 +5,7 @@ This is the source code for jessebuchanan.ca. It is powered by [Octopress 2](htt
 ## Installation
 
 ```
-git clone git@github.com:jbinto/blog.git
+git clone --recursive git@github.com:jbinto/blog.git
 cd blog
 bundle
 ```
